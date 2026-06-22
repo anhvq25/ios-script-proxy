@@ -11,6 +11,7 @@
 //                     + background playback setting (account/get_setting)
 // ───────────────────────────────────────────────────────────────────────────
 
+(function () {
 const YT_API =
   /^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_setting|get_watch)/i;
 
@@ -571,11 +572,11 @@ function patchYouTubeBody(bytes, endpoint) {
   return result;
 }
 
-async function onRequest(context, request) {
+globalThis.onRequest = async function onRequest(context, request) {
   return request;
-}
+};
 
-async function onResponse(context, request, response) {
+globalThis.onResponse = async function onResponse(context, request, response) {
   const endpoint = getEndpoint(request.url);
   if (!endpoint) return response;
 
@@ -594,4 +595,5 @@ async function onResponse(context, request, response) {
     console.log("[youtube] patch failed for " + endpoint + ": " + e);
     return response;
   }
-}
+};
+})();
