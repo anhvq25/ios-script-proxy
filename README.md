@@ -99,10 +99,40 @@ rewrite, decode)? See the companion collection:
 
 ---
 
+## 📖 Mục đích / Purpose
+
+> **Tài liệu học tập, demo và tham khảo.** Toàn bộ nội dung trong repo này được
+> cung cấp **chỉ cho mục đích học tập, minh hoạ kỹ thuật và tham khảo** — để
+> hiểu cách `onRequest`/`onResponse` hoạt động khi **debug app do chính bạn xây
+> dựng** hoặc traffic bạn được phép kiểm thử.
+>
+> This repository is **learning, demo and reference material only** — to
+> understand how HTTP(S) interceptor scripting works while debugging **apps you
+> build yourself** or traffic you are authorized to test.
+
+## 🚫 Nghiêm cấm / Prohibited use
+
+**NGHIÊM CẤM** sử dụng bất kỳ nội dung nào ở đây để:
+
+- ❌ Hack, crack, trick, hay can thiệp trái phép vào app/dịch vụ **không thuộc
+  sở hữu của bạn**.
+- ❌ Qua mặt thanh toán, mở khoá tính năng trả phí, giả mạo subscription /
+  entitlement / số dư / quyền hạn của bên thứ ba.
+- ❌ Giả mạo (forge) dữ liệu, vượt qua xác thực, hoặc né tránh giới hạn của
+  dịch vụ bạn không có quyền.
+- ❌ Tấn công, scrape, hay làm gián đoạn bất kỳ dịch vụ nào mà không được phép.
+
+Strictly **prohibited**: hacking, tricking, bypassing payments/licensing,
+forging data, or tampering with apps and services you do **not** own or are not
+authorized to test.
+
+---
+
 ## ⚖️ Disclaimer
 
 These scripts are for **educational, debugging and personal-development**
 purposes, on **traffic and apps you own or are authorized to test**. Do **not**
 use them to bypass paid features, forge data, or modify services you don't own.
 You are responsible for complying with the Terms of Service of any app and the
-laws of your jurisdiction. Licensed under [MIT](LICENSE).
+laws of your jurisdiction. The authors accept no liability for misuse.
+Licensed under [MIT](LICENSE).
