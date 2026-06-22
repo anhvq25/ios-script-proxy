@@ -9,13 +9,13 @@
         "enabled": true,
         "name": "Locket — RevenueCat mock",
         "url": "https://api.revenuecat.com/v1/subscribers/*",
-        "scriptPath": "scripts/locket.js"
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/locket.js"
       },
       {
         "enabled": true,
         "name": "YouTube — ads + background",
         "url": "https://youtubei.googleapis.com/youtubei/v1/*",
-        "scriptPath": "scripts/youtube.js"
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/youtube.js"
       }
     ]
   }
