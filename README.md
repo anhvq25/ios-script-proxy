@@ -99,32 +99,23 @@ rewrite, decode)? See the companion collection:
 
 ---
 
-## 📖 Mục đích / Purpose
+## 📖 Purpose
 
-> **Tài liệu học tập, demo và tham khảo.** Toàn bộ nội dung trong repo này được
-> cung cấp **chỉ cho mục đích học tập, minh hoạ kỹ thuật và tham khảo** — để
-> hiểu cách `onRequest`/`onResponse` hoạt động khi **debug app do chính bạn xây
-> dựng** hoặc traffic bạn được phép kiểm thử.
->
-> This repository is **learning, demo and reference material only** — to
+> **Learning, demo and reference material only.** This repository is provided
+> **solely for education, technique demonstration and reference** — to
 > understand how HTTP(S) interceptor scripting works while debugging **apps you
 > build yourself** or traffic you are authorized to test.
 
-## 🚫 Nghiêm cấm / Prohibited use
+## 🚫 Prohibited use
 
-**NGHIÊM CẤM** sử dụng bất kỳ nội dung nào ở đây để:
+These scripts are strictly **prohibited** from being used to:
 
-- ❌ Hack, crack, trick, hay can thiệp trái phép vào app/dịch vụ **không thuộc
-  sở hữu của bạn**.
-- ❌ Qua mặt thanh toán, mở khoá tính năng trả phí, giả mạo subscription /
-  entitlement / số dư / quyền hạn của bên thứ ba.
-- ❌ Giả mạo (forge) dữ liệu, vượt qua xác thực, hoặc né tránh giới hạn của
-  dịch vụ bạn không có quyền.
-- ❌ Tấn công, scrape, hay làm gián đoạn bất kỳ dịch vụ nào mà không được phép.
-
-Strictly **prohibited**: hacking, tricking, bypassing payments/licensing,
-forging data, or tampering with apps and services you do **not** own or are not
-authorized to test.
+- ❌ Hack, crack, trick, or tamper with apps/services you do **not** own.
+- ❌ Bypass payments, unlock paid features, or forge subscriptions /
+  entitlements / balances / permissions of third-party services.
+- ❌ Forge data, defeat authentication, or evade limits of services you are not
+  authorized to use.
+- ❌ Attack, scrape or disrupt any service without authorization.
 
 ---
 
