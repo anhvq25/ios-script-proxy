@@ -1,7 +1,7 @@
 {
   "moniconfig": 1,
   "app": "Moni Proxy",
-  "exportedAt": "2026-06-22T10:00:00.000Z",
+  "exportedAt": "2026-06-22T15:10:00.000Z",
   "name": "iOS Script Proxy — Locket + YouTube",
   "rules": {
     "scripts": [
@@ -14,7 +14,16 @@
       {
         "enabled": true,
         "name": "YouTube — ads + background",
-        "url": "https://youtubei.googleapis.com/youtubei/v1/*",
+        "url": [
+          "https://youtubei.googleapis.com/youtubei/v1/player*",
+          "https://youtubei.googleapis.com/youtubei/v1/get_watch*",
+          "https://youtubei.googleapis.com/youtubei/v1/browse*",
+          "https://youtubei.googleapis.com/youtubei/v1/next*",
+          "https://youtubei.googleapis.com/youtubei/v1/search*",
+          "https://youtubei.googleapis.com/youtubei/v1/reel/reel_watch_sequence*",
+          "https://youtubei.googleapis.com/youtubei/v1/account/get_setting*",
+          "https://youtubei.googleapis.com/youtubei/v1/get_setting*"
+        ],
         "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/youtube.js"
       }
     ]

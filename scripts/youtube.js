@@ -2,18 +2,24 @@
 // ───────────────────────────────────────────────────────────────────────────
 // YouTube API response interceptor — Moni Proxy standard format.
 //
-// URL pattern:
-//   https://youtubei.googleapis.com/youtubei/v1/*
+// URL pattern (moniconfig — do NOT use v1/* wildcard):
+//   player | get_watch | browse | next | search | reel/reel_watch_sequence
+//   account/get_setting | get_setting
 //
-// Features:
-//   • Remove ads — player ad fields, pagead tracking, in-feed ad chunks
-//   • Background mode — miniPlayer + backgroundPlayer (player/get_watch)
-//                     + background playback setting (account/get_setting)
+// Excluded: att/*, guide, log_event, … (attestation / integrity)
 // ───────────────────────────────────────────────────────────────────────────
 
 (function () {
-const YT_API =
-  /^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_setting|get_watch)/i;
+const ALLOWED = new Set([
+  "player",
+  "get_watch",
+  "browse",
+  "next",
+  "search",
+  "reel/reel_watch_sequence",
+  "account/get_setting",
+  "get_setting",
+]);
 
 const PAGEAD = [112, 97, 103, 101, 97, 100]; // "pagead"
 const PLAYER_AD_FIELDS = new Set([7, 68]);
@@ -269,7 +275,7 @@ function patchPlaybackTracking(bytes) {
 }
 
 function patchPlayerMessage(bytes) {
-  let result = mapMessage(bytes, {
+  return mapMessage(bytes, {
     remove: PLAYER_AD_FIELDS,
     transform: {
       [F.playabilityStatus]: patchPlayabilityStatus,
@@ -279,13 +285,6 @@ function patchPlayerMessage(bytes) {
       [F.playabilityStatus]: () => buildPlayabilityStatusForBackground(),
     },
   });
-
-  const ads = neutralizePageadFields(result.bytes);
-  if (ads.modified) {
-    result = { bytes: ads.bytes, changed: true };
-  }
-
-  return result;
 }
 
 function removeLargePageadChunks(bytes) {
@@ -328,58 +327,8 @@ function removeLargePageadChunks(bytes) {
   return { bytes: Uint8Array.from(out), changed };
 }
 
-function neutralizePageadFields(bytes) {
-  const data = new Uint8Array(bytes);
-  let modified = false;
-
-  for (let i = 0; i <= data.length - PAGEAD.length; i++) {
-    if (!PAGEAD.every((b, j) => data[i + j] === b)) continue;
-
-    for (let back = 1; back <= 12 && i - back >= 0; back++) {
-      try {
-        const [tag] = readVarint(data, i - back);
-        const wireType = tag & 7;
-        const fieldNum = tag >>> 3;
-        if (wireType !== 2 || fieldNum < 2) continue;
-
-        const newFieldNum = fieldNum - 1;
-        const newTag = (newFieldNum << 3) | wireType;
-        const oldLen = writeVarint(tag).length;
-        const newLen = writeVarint(newTag).length;
-        if (oldLen !== newLen) continue;
-
-        const encoded = writeVarint(newTag);
-        for (let k = 0; k < encoded.length; k++) {
-          data[i - back + k] = encoded[k];
-        }
-        modified = true;
-        break;
-      } catch (e) {
-        // keep scanning
-      }
-    }
-  }
-
-  return { bytes: data, modified };
-}
-
 function patchFeedMessage(bytes) {
-  let changed = false;
-  let current = bytes;
-
-  const chunks = removeLargePageadChunks(current);
-  if (chunks.changed) {
-    current = chunks.bytes;
-    changed = true;
-  }
-
-  const ads = neutralizePageadFields(current);
-  if (ads.modified) {
-    current = ads.bytes;
-    changed = true;
-  }
-
-  return { bytes: current, changed };
+  return removeLargePageadChunks(bytes);
 }
 
 function buildBackgroundSettingItem() {
@@ -537,8 +486,16 @@ function patchWatchMessage(bytes) {
 }
 
 function getEndpoint(url) {
-  const match = url.match(YT_API);
-  return match ? match[1].toLowerCase() : null;
+  try {
+    const path = new URL(url).pathname;
+    const prefix = "/youtubei/v1/";
+    if (!path.startsWith(prefix)) return null;
+    const endpoint = path.slice(prefix.length).toLowerCase();
+    if (endpoint.startsWith("att/")) return null;
+    return ALLOWED.has(endpoint) ? endpoint : null;
+  } catch (e) {
+    return null;
+  }
 }
 
 function patchYouTubeBody(bytes, endpoint) {
@@ -589,7 +546,6 @@ globalThis.onResponse = async function onResponse(context, request, response) {
     if (!result.changed) return response;
 
     response.rawBody = bytesToRaw(result.bytes);
-    delete response.body;
     return response;
   } catch (e) {
     console.log("[youtube] patch failed for " + endpoint + ": " + e);
