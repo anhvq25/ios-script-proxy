@@ -1,3 +1,7 @@
+// EDUCATIONAL USE ONLY — For learning and reference purposes.
+// Strictly prohibited: copying or sharing this script to hack, crack,
+// or bypass paid features of apps you do not own or are not authorized to test.
+
 async function onRequest(context, request) {
   delete request.headers["x-revenuecat-etag"];
   delete request.headers["X-RevenueCat-ETag"];
