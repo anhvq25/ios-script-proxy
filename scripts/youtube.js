@@ -1,14 +1,3 @@
-// youtube.js
-// ───────────────────────────────────────────────────────────────────────────
-// YouTube API response interceptor — Moni Proxy standard format.
-//
-// URL pattern (moniconfig — do NOT use v1/* wildcard):
-//   player | get_watch | browse | next | search | reel/reel_watch_sequence
-//   account/get_setting | get_setting
-//
-// Excluded: att/*, guide, log_event, … (attestation / integrity)
-// ───────────────────────────────────────────────────────────────────────────
-
 (function () {
 const ALLOWED = new Set([
   "player",

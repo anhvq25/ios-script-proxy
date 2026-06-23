@@ -1,8 +1,8 @@
 {
   "moniconfig": 1,
   "app": "Moni Proxy",
-  "exportedAt": "2026-06-22T16:00:00.000Z",
-  "name": "iOS Script Proxy — Locket + Picsart",
+  "exportedAt": "2026-06-22T18:00:00.000Z",
+  "name": "iOS Script Proxy — Demo scripts pack",
   "rules": {
     "scripts": [
       {
@@ -21,6 +21,25 @@
           "https://api.meiease.cn/shop/subscription/*"
         ],
         "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/picsart.js"
+      },
+      {
+        "enabled": true,
+        "name": "BeautyPlus — vip mock",
+        "url": [
+          "https://api.mr.pixocial.com/v1/manual_unlock*",
+          "https://newbeee-api.beautyplus.com/api/v1/asset/balance*"
+        ],
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/beautyplus.js"
+      },
+      {
+        "enabled": true,
+        "name": "Camera360 — vip + ad mock",
+        "url": [
+          "https://*.camera360.com/api/order/purchase*",
+          "https://*.camera360.com/api/iap/check-receipt*",
+          "https://*.camera360.com/v*/operational-positions*"
+        ],
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/camera360.js"
       }
     ]
   }

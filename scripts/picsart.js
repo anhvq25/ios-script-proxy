@@ -1,17 +1,3 @@
-// picsart.js
-// ───────────────────────────────────────────────────────────────────────────
-// Picsart subscription mock — Moni Proxy standard format.
-// Converted from Surge/QX $done({ response: { body, status } }).
-//
-// URL pattern:
-//   https://api.picsart.com/shop/subscription/*
-//   https://api.picsart.cn/shop/subscription/*
-//   https://api.meiease.com/shop/subscription/*
-//   https://api.meiease.cn/shop/subscription/*
-//
-// Endpoints: /shop/subscription/validate | /shop/subscription/apple/purchases
-// ───────────────────────────────────────────────────────────────────────────
-
 async function onRequest(context, request) {
   delete request.headers["if-none-match"];
   delete request.headers["If-None-Match"];
