@@ -46,6 +46,12 @@
           "https://*.camera360.com/v*/operational-positions*"
         ],
         "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/camera360.js"
+      },
+      {
+        "enabled": true,
+        "name": "DramaBox — vip + unlock mock",
+        "url": "https://sapi.dramaboxdb.com/drama-box/*",
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/dramabox.js"
       }
     ]
   }
