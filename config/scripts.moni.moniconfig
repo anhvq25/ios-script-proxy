@@ -7,9 +7,15 @@
     "scripts": [
       {
         "enabled": true,
-        "name": "RevenueCat — shared (Locket + VSCO)",
+        "name": "Locket — RevenueCat mock",
         "url": "https://api.revenuecat.com/v1/subscribers/*",
-        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/revenuecat.js"
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/locket.js"
+      },
+      {
+        "enabled": true,
+        "name": "VSCO — RevenueCat mock",
+        "url": "https://api.revenuecat.com/v1/subscribers/*",
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/vsco.js"
       },
       {
         "enabled": true,
