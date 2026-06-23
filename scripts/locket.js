@@ -15,6 +15,13 @@ async function onResponse(context, request, response) {
   try {
     const obj = JSON.parse(response.body);
 
+    const haystack =
+      JSON.stringify(obj) +
+      (request.headers["user-agent"] || request.headers["User-Agent"] || "");
+    if (/vsco|VSCO|VSCOCAM|FILMX/i.test(haystack)) {
+      return response;
+    }
+
     obj.subscriber.entitlements = obj.subscriber.entitlements || {};
     obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
 

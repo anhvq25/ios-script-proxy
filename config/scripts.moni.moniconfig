@@ -13,6 +13,12 @@
       },
       {
         "enabled": true,
+        "name": "VSCO — RevenueCat mock",
+        "url": "https://api.revenuecat.com/v1/subscribers/*",
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/vsco.js"
+      },
+      {
+        "enabled": true,
         "name": "Picsart — subscription mock",
         "url": [
           "https://api.picsart.com/shop/subscription/*",
