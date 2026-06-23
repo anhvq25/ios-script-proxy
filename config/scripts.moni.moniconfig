@@ -1,8 +1,8 @@
 {
   "moniconfig": 1,
   "app": "Moni Proxy",
-  "exportedAt": "2026-06-22T15:10:00.000Z",
-  "name": "iOS Script Proxy — Locket + YouTube",
+  "exportedAt": "2026-06-22T16:00:00.000Z",
+  "name": "iOS Script Proxy — Locket + Picsart",
   "rules": {
     "scripts": [
       {
@@ -13,18 +13,14 @@
       },
       {
         "enabled": true,
-        "name": "YouTube — ads + background",
+        "name": "Picsart — subscription mock",
         "url": [
-          "https://youtubei.googleapis.com/youtubei/v1/player*",
-          "https://youtubei.googleapis.com/youtubei/v1/get_watch*",
-          "https://youtubei.googleapis.com/youtubei/v1/browse*",
-          "https://youtubei.googleapis.com/youtubei/v1/next*",
-          "https://youtubei.googleapis.com/youtubei/v1/search*",
-          "https://youtubei.googleapis.com/youtubei/v1/reel/reel_watch_sequence*",
-          "https://youtubei.googleapis.com/youtubei/v1/account/get_setting*",
-          "https://youtubei.googleapis.com/youtubei/v1/get_setting*"
+          "https://api.picsart.com/shop/subscription/*",
+          "https://api.picsart.cn/shop/subscription/*",
+          "https://api.meiease.com/shop/subscription/*",
+          "https://api.meiease.cn/shop/subscription/*"
         ],
-        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/youtube.js"
+        "remoteUrl": "https://raw.githubusercontent.com/anhvq25/ios-script-proxy/main/scripts/picsart.js"
       }
     ]
   }
